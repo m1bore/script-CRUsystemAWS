@@ -15,10 +15,8 @@ jobs:
 
     - name: Setup SSH
       run: |
-        mkdir -p ~/.ssh/
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -t rsa milesdawbucket.s3.amazonaws.com >> ~/.ssh/known_hosts
-
-    - name: Upload to S3
-      run: scp -r ./* milesdawbucket:/.
+        echo "$SSH_PRIVATE_KEY" > ssh_key
+        chmod 600 ssh_key
+        scp -i ssh_key -r ./* milesdawbucket:/./web
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
