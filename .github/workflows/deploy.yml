@@ -17,7 +17,7 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > ssh_key
         chmod 600 ssh_key
-        ssh-keyscan -t rsa milesdawbucket.s3.amazonaws.com >> ~/.ssh/known_hosts
-        scp -i ssh_key -r ./* milesdawbucket:/examen/
+        scp -i ssh_key -r ./* milesdawbucket.s3.amazonaws.com:/examen/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
