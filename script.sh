@@ -32,7 +32,7 @@ subnet_index=$((subnet_index + 1))
 name="desarrollo"
 
 subnet_cidr="192.168.$subnet_index.0/24"
-subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
+subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $availability_zone --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
 aws ec2 run-instances --image-id ami-0230bd60aa48260c6 --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
 
@@ -44,7 +44,7 @@ subnet_index=$((subnet_index + 1))
 
 name="mantenimiento"
 subnet_cidr="192.168.$subnet_index.0/24"
-subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
+subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $availability_zone --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
 aws ec2 run-instances --image-id ami-0230bd60aa48260c6 --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
 
@@ -56,7 +56,7 @@ subnet_index=$((subnet_index + 1))
 
 name="soporte"
 subnet_cidr="192.168.$subnet_index.0/24"
-subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
+subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $availability_zone --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
 aws ec2 run-instances --image-id ami-0230bd60aa48260c6 --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
 
