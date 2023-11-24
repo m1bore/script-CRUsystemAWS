@@ -16,53 +16,50 @@ echo "VPC creada con ID: $vpc_id"
 subnet_index=1
 
 # Ingeniería
+region="us-east-1a"
 name="ingenieria"
-count=100
 subnet_cidr="192.168.$subnet_index.0/24"
 subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
-for ((i=1; i<=$count; i++)); do
-    aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
-done
+aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
+
 echo "Subred y EC2 para $name creadas"
 
 ((subnet_index++))
 
 # Desarrollo
+
 name="desarrollo"
-count=500
+
 subnet_cidr="192.168.$subnet_index.0/24"
 subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
-for ((i=1; i<=$count; i++)); do
-    aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
-done
+aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
+
 echo "Subred y EC2 para $name creadas"
 
 ((subnet_index++))
 
 # Mantenimiento
+
 name="mantenimiento"
-count=20
 subnet_cidr="192.168.$subnet_index.0/24"
 subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
-for ((i=1; i<=$count; i++)); do
-    aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
-done
+aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
+
 echo "Subred y EC2 para $name creadas"
 
 ((subnet_index++))
 
 # Soporte
+
 name="soporte"
-count=250
 subnet_cidr="192.168.$subnet_index.0/24"
 subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $subnet_cidr --availability-zone $region --query 'Subnet.SubnetId' --output text --region $region)
 instance_name="ec2-$name"
-for ((i=1; i<=$count; i++)); do
-    aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
-done
+aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --subnet-id $subnet_id --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance_name-$i}]" --region $region
+
 echo "Subred y EC2 para $name creadas"
 
 echo "Script completado"
