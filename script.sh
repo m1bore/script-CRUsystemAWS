@@ -25,7 +25,7 @@ aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --su
 
 echo "Subred y EC2 para $name creadas"
 
-((subnet_index++))
+subnet_index=$((subnet_index + 1))
 
 # Desarrollo
 
@@ -38,7 +38,7 @@ aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --su
 
 echo "Subred y EC2 para $name creadas"
 
-((subnet_index++))
+subnet_index=$((subnet_index + 1))
 
 # Mantenimiento
 
@@ -50,7 +50,7 @@ aws ec2 run-instances --image-id ami-xxxxxxxxxxxxx --instance-type t2.micro --su
 
 echo "Subred y EC2 para $name creadas"
 
-((subnet_index++))
+subnet_index=$((subnet_index + 1))
 
 # Soporte
 
