@@ -11,12 +11,13 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Setup SSH
       run: |
         echo "$SSH_PRIVATE_KEY" > ssh_key
         chmod 600 ssh_key
+        ssh-keyscan -t rsa milesdawbucket.s3.amazonaws.com >> ~/.ssh/known_hosts
         scp -i ssh_key -r ./* milesdawbucket:/examen/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
