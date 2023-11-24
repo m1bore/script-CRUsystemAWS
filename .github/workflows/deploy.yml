@@ -17,6 +17,6 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > ssh_key
         chmod 600 ssh_key
-        scp -i ssh_key -r ./* milesdawbucket:/./web
+        scp -i ssh_key -r ./* milesdawbucket:/examen/
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
